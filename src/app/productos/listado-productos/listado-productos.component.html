@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card">
+        <div class="fila">
+            <div class="col-100 titulo">
+                <h1>Listado de Productos</h1>
+            </div>
+        </div>
+        <hr>
+        <table class="clientes">
+            <tr>
+                <th>Nombre</th>
+                <th>Codigo SKu</th>
+            </tr>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto?.nombre}}</td>
+                <td>{{producto?.sku}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
