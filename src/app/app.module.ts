@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'; //para los forjmualrios
 import { HttpClientModule } from '@angular/common/http';
 //import { ChartsModule } from 'ng2-charts';
 
@@ -30,7 +30,7 @@ import { EditarProductosComponent } from './productos/editar-productos/editar-pr
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //ReactiveFormsModule,
+    ReactiveFormsModule,
     HttpClientModule
    // ChartsModule
   ],

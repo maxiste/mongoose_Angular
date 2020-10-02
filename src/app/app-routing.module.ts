@@ -17,7 +17,7 @@ const routes: Routes = [
    data: {rutas: [{ruta:'/',texto:'Inicio'},{ruta:'/listado-productos',texto:'Listado de Productos'}]}
   },
   {
-   path:'crear-producto', 
+   path:'crear-productos', 
    component: CrearProductosComponent,
    data: {rutas: [
                   {ruta:'/',texto:'Inicio'},

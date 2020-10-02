@@ -11,7 +11,9 @@ import {map} from "rxjs/operators"; //para el pipe
 })
 export class ProductosService {
   urlProducto = environment.urlProducto;
+  
   constructor(private http:HttpClient) { }  //se inyecta la clase importada }
+  
   getProductos(){
   return this.http.get(this.urlProducto)
                    .pipe(
@@ -20,5 +22,14 @@ export class ProductosService {
                        
                      })
                    ) //se e pasa la url de la api
+  }
+  postProducto(producto:Producto){ //con la informacion que vien del formualrio
+    return this.http.post(this.urlProducto,producto)
+    .pipe(
+      map((res:any)=>{
+        return res
+        
+      })
+    ) //se e pasa la url de la api
   }
 }
