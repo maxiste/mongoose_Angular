@@ -22,7 +22,7 @@ const routes: Routes = [
    data: {rutas: [
                   {ruta:'/',texto:'Inicio'},
                   {ruta:'/listado-productos',texto:'Listado de productos'},
-                  {ruta:'/crear-producto',texto:'Crear producto'}
+                  {ruta:'/crear-productos',texto:'Crear producto'}
                 ]
           }
   },

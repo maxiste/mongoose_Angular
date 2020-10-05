@@ -3,9 +3,18 @@
         <div class="fila">
             <div class="col-100 titulo">
                 <h1>Listado de Productos</h1>
+                <form class="buscador" [formGroup]="formSearch">
+                    <label (click)="showSearch()">
+                        <img src="assets/search.svg">
+                    </label>
+                    <input type="search" 
+                           placeholder="Nombre producto..." 
+                           #search
+                           formControlName="search">
+               </form>
                 <button routerLink="/crear-productos">CrearProductos</button>
             </div>
-        </div>
+        </div> 
         <hr>
         <table class="clientes">
             <tr>
