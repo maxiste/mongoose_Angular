@@ -11,11 +11,20 @@ const routes: Routes = [
    component: InicioComponent,
    data: {rutas: [{ruta:'/',texto:'Inicio'}]}
   },
+
   {
    path:'listado-productos', 
    component: ListadoProductosComponent,
-   data: {rutas: [{ruta:'/',texto:'Inicio'},{ruta:'/listado-productos',texto:'Listado de Productos'}]}
+   data: {rutas: [{ruta:'/',texto:'Inicio'},
+         {ruta:'/listado-productos',texto:'Listado de Productos'}]}
   },
+  // {
+  //   path:'listado-clientes', 
+  //   //component: ListadoClientesComponent,
+  //   data: {rutas: [{ruta:'/',texto:'Inicio'},
+  //         {ruta:'/listado-clientes',texto:'Listado de Clientes'}]}
+  //  },
+
   {
    path:'crear-productos', 
    component: CrearProductosComponent,
@@ -27,15 +36,16 @@ const routes: Routes = [
           }
   },
   {
-   path:'editar-producto/:id', 
+   path:'editar-productos/:_id', 
    component: EditarProductosComponent,
    data: {rutas: [
                   {ruta:'/',texto:'Inicio'},
                   {ruta:'/listado-productos',texto:'Listado de productos'},
-                  {ruta:'/editar-producto/:id',texto:'Editar producto'}
+                  {ruta:'/editar-productos/:_id',texto:'Editar producto'}
                 ]
           }
-  }
+  },
+  {path:"**", component:InicioComponent}
 ];
 
 

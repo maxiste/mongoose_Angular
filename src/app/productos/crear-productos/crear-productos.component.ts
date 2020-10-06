@@ -42,9 +42,11 @@ export class CrearProductosComponent implements OnInit {
       
     this.productosService.postProducto(producto)
                   .subscribe((res:any)=>{
-                      this.mensajesService.setMensaje(res.mensaje, 'El producto ha sido creado correctamente');
+                      //this.mensajesService.setMensaje(res.mensaje, 'El producto ha sido creado correctamente'); pues tambien funciona
+                      this.mensajesService.setMensaje('El producto ha sido creado correctamente',"success");
                       this.router.navigate(['/listado-productos']);
                     },(err:any)=>{
+                      
                       if(err.error.error !== undefined) {
                         this.mensajesService.setMensaje('Ya existe un producto con ese sku', 'error');
                       } else {

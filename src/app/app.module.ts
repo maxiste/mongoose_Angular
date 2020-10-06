@@ -14,6 +14,8 @@ import { NavComponent } from './comunes/nav/nav.component';
 import { ListadoProductosComponent } from './productos/listado-productos/listado-productos.component';
 import { CrearProductosComponent } from './productos/crear-productos/crear-productos.component';
 import { EditarProductosComponent } from './productos/editar-productos/editar-productos.component';
+import { BreadcrumbComponent } from './comunes/breadcrumb/breadcrumb.component';
+import { ModalComponent } from './comunes/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { EditarProductosComponent } from './productos/editar-productos/editar-pr
     ListadoProductosComponent,
     CrearProductosComponent,
     EditarProductosComponent,
+    BreadcrumbComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

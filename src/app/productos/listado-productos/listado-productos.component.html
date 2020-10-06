@@ -1,4 +1,5 @@
 <div class="container">
+    <app-breadcrumb></app-breadcrumb>
     <div class="card">
         <div class="fila">
             <div class="col-100 titulo">
@@ -20,12 +21,25 @@
             <tr>
                 <th>Nombre</th>
                 <th>Codigo SKu</th>
+                <th></th>
             </tr>
             <tr *ngFor="let producto of productos">
                 <td>{{producto?.nombre}}</td>
                 <td>{{producto?.sku}}</td>
+                <td>
+                    <button class="warning" routerLink="/editar-productos/{{producto._id}}">
+                        <img src="assets/edit.svg" alt="">
+                    </button>
+                    <button class="danger" (click)="showModal(producto._id)">
+                    <img src="assets/trash.svg" alt="">
+                    </button>
+                </td>
             </tr>
         </table>
+        <p *ngIf="consultando">Espere por favor....</p>
+        <p *ngIf="productos?.length===0">No se encontraron Productos</p>
     </div>
 </div>
-
+<app-modal *ngIf [texto]="textoModal"
+            [parametro]="_id"
+                (action)="getAcion($event)"></app-modal>

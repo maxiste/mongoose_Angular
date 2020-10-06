@@ -20,13 +20,14 @@ export class ListadoProductosComponent implements OnInit {
   //productos:any;
 productos:Array<Producto>; //se agrego aregando un objeto como array
 modal=false; //definiiendo ventana modalr de cambios
-id:string;
+textoModal="¿Esta seguro que quiere Elimnar el Producto?"
+_id:string;
 
-formSearch:FormGroup; //donde se importa de la libreria de forms
-@ViewChild("search",{static:false}) searchRef:ElementRef;
+formSearch:FormGroup; //donde se importa de la libreria de forms se agrega automatica,memte
+@ViewChild("search",{static:false}) searchRef:ElementRef; //el elemenRef del core de angular
 
 showSpinner=true; //se agrega cuando se agrega para las busquedas
-
+consultando=false;
   constructor(private productosService:ProductosService,
               private mensajesService: MensajesService) { }
 
@@ -52,7 +53,7 @@ showSpinner=true; //se agrega cuando se agrega para las busquedas
   this.formSearch=new FormGroup({ //realiza la busqueda en el formulario
     search:new FormControl("")
   });
-  this.onSearch(); //se decalra mas abajo dichi metodo
+  this.onSearch(); //se declara mas abajo dichi metodo y muestre lo que hace el metodo
   }
   //busquedas o metodos de Angualr para buscar
 loadProductos(){
@@ -65,17 +66,19 @@ loadProductos(){
                   console.log(err);
                 })
 }
-onSearch() {
+onSearch() { //para que detecte los cambios cuando escribes en la busqueda
   this.formSearch.get('search').valueChanges
                     .subscribe(nombre =>{
                       this.productos = [];
                       this.showSpinner = true;
                       if (nombre !== '') {
+                        this.consultando=true;
                         this.productosService.getProducto(nombre)
                                   .subscribe((res:any)=>{
                                       this.showSpinner = false;
                                       this.productos = res.productos;
                                     },(err:any)=>{
+                                      this.consultando=false;
                                       this.showSpinner = false;
                                       console.log(err);
                                     })
@@ -87,12 +90,33 @@ onSearch() {
 }
 
 //remover productos
+removeProducto(_id){
+  this.productosService.deleteProducto(_id)
+                        .subscribe(
+                          (res:any)=>{
+                            console.log(res);
+                            this.loadProductos()
+                        },
+                        (err:any)=>{
+                          console.log(err)
+                        }
+                        )
+}
 
 //muestra de ventanas modales
+showModal(){
+  this._id=this._id;
 
+}
 //Oculta ventanas modales
 
 showSearch() {
-  this.searchRef.nativeElement.classList.add('open');
+  this.searchRef.nativeElement.classList.add('open'); // parecido a jquery cuando se agrega elementos del css ejemplo
+  //this.searchRef.nativeElement.classList.toggle('open'); // parecido a jquery cuando se agrega elementos del css ejemplo
+}
+getAction(event){
+ if (event.action){
+   this.removeProducto(event.parametro);
+ }
 }
 }

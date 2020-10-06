@@ -5,8 +5,9 @@
             <div class="bar middle"></div>
             <div class="bar down"></div>
         </div>
-        <div class="mensaje" 
-             *ngIf="texto?.length > 0 && showMensaje"
+        <!--*ngIf se condiciona para que borre el mensaje  showMensaje vien de navMesanje.ts -->
+        <div class="mensaje"
+             *ngIf="texto?.length > 0 && showMensaje" 
              [ngClass]="{
                             'success': tipoMensaje === 'exitoTotal',
                             'warning': tipoMensaje === 'warning',
